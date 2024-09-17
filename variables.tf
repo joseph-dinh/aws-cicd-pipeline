@@ -1,8 +1,8 @@
-variable "codebuild_credentials" {
+variable codebuild_credentials {
   type = string
 }
 
-variable "codestar_connector_credentials" {
+variable codestar_connector_credentials {
   type = string
 }
 
