@@ -50,40 +50,6 @@ resource "aws_codebuild_project" "tf-apply" {
   }
 }
 
-# resource "aws_codepipeline" "cicd_pipeline" {
-#   name = "tf-cicd"
-#   role_arn = aws_iam_role.terraform-codepipeline-role.arn
-
-#   artifact_store {
-#     type = "S3"
-#     location = aws_s3_bucket.codepipeline-artifacts.id
-#   }
-
-#   stage {
-#     name = "Source"
-
-#     action {
-#       name = "Source"
-#       category = "Source"
-#       owner = "AWS"
-#       provider = "CodeStarSourceConnection"
-#       version = "1"
-#       output_artifacts = ["tf-code"]
-      
-#       configuration = {
-#         FullRepositoryId = "joseph-dinh/aws-terraform-automation"
-#         BranchName = "master"
-#         ConnectionArn = var.codestar_connector_credentials
-#         OutputArtifactFormat = "CODE_ZIP"
-#       }
-#     }
-#   }
-
-#   stage {
-    
-#   }
-# }
-
 resource "aws_codepipeline" "cicd_pipeline" {
   name     = "tf-cicd-pipeline"
   role_arn = aws_iam_role.terraform-codepipeline-role.arn
