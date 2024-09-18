@@ -16,6 +16,16 @@ resource "aws_codebuild_project" "tf-plan" {
       credential = var.codebuild_credentials
       credential_provider = "SECRETS_MANAGER"
     }
+    environment_variable {
+      name = "TF_VAR_CODEBUILD_CREDENTIALS"
+      value = "codebuild:codebuild_credentials"
+      type = "SECRETS_MANAGER"
+    }
+    environment_variable {
+      name = "TF_VAR_CODESTAR_CONNECTOR_CREDENTIALS"
+      value = "codebuild:codestar_connector_credentials"
+      type = "SECRETS_MANAGER"
+    }
   }
   source {
     type = "CODEPIPELINE"
@@ -40,6 +50,16 @@ resource "aws_codebuild_project" "tf-apply" {
     registry_credential {
       credential = var.codebuild_credentials
       credential_provider = "SECRETS_MANAGER"
+    }
+    environment_variable {
+      name = "TF_VAR_CODEBUILD_CREDENTIALS"
+      value = "codebuild:codebuild_credentials"
+      type = "SECRETS_MANAGER"
+    }
+    environment_variable {
+      name = "TF_VAR_CODESTAR_CONNECTOR_CREDENTIALS"
+      value = "codebuild:codestar_connector_credentials"
+      type = "SECRETS_MANAGER"
     }
   }
   source {

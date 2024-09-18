@@ -7,4 +7,4 @@ phases:
   
   build:
     commands:
-      - terraform apply --auto-approve
+      - terraform apply --auto-approve -var="codebuild_credentials=$TF_VAR_CODEBUILD_CREDENTIALS" -var="codestar_connector_credentials=$TF_VAR_CODESTAR_CONNECTOR_CREDENTIALS"
